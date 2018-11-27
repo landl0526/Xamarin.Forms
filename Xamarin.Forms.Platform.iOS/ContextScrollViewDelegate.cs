@@ -240,7 +240,7 @@ namespace Xamarin.Forms.Platform.iOS
 				return;
 
 			var cell = GetContextCell(scrollView);
-			cell.ContentCell.RemoveGestureRecognizer(_closer);
+			cell?.ContentCell?.RemoveGestureRecognizer(_closer);
 			_closer.Dispose();
 			_closer = null;
 
@@ -252,9 +252,9 @@ namespace Xamarin.Forms.Platform.iOS
 
 		ContextActionsCell GetContextCell(UIScrollView scrollView)
 		{
-			var view = scrollView.Superview.Superview;
+			var view = scrollView?.Superview?.Superview;
 			var cell = view as ContextActionsCell;
-			while (view.Superview != null)
+			while (view?.Superview != null)
 			{
 				cell = view as ContextActionsCell;
 				if (cell != null)
